@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    tools:context=".MainActivity">
+
+
+    <Button
+        android:id="@+id/bt_saveLocation"
+        android:layout_width="295dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="45dp"
+        android:text="Save the parking location"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/bt_saveLocation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/time_to_return"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/editbox_background"
+        android:hint="When you want to return"
+        android:textSize="32sp"
+
+        app:layout_constraintBottom_toTopOf="@+id/bt_saveLocation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_or"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="or"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@+id/time_to_return"
+        app:layout_constraintEnd_toEndOf="@+id/parking_time"
+        app:layout_constraintStart_toStartOf="@+id/parking_time"
+        app:layout_constraintTop_toBottomOf="@+id/parking_time" />
+
+    <TextView
+        android:id="@+id/parking_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/editbox_background"
+        android:hint="Time you have"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@+id/bt_saveLocation"
+        app:layout_constraintEnd_toEndOf="@+id/time_to_return"
+        app:layout_constraintStart_toStartOf="@+id/time_to_return"
+        app:layout_constraintTop_toBottomOf="@+id/time_to_return" />
+
+    <TextView
+        android:id="@+id/tv_enter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="Enter"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@+id/time_to_return"
+        app:layout_constraintEnd_toEndOf="@+id/time_to_return"
+        app:layout_constraintStart_toStartOf="@+id/time_to_return" />
+
+    <Button
+        android:id="@+id/bt_navigate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="navigate"
+        app:layout_constraintBottom_toTopOf="@+id/bt_saveLocation"
+        app:layout_constraintEnd_toEndOf="@+id/parking_time"
+        app:layout_constraintStart_toStartOf="@+id/parking_time"
+        app:layout_constraintTop_toBottomOf="@+id/parking_time" />
+</androidx.constraintlayout.widget.ConstraintLayout>
