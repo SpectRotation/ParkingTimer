@@ -46,13 +46,11 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_LOCATION = 1;
     private boolean parkingPositionSaved;
     private TextView parkingTime, timeToReturn, textView, textView2;
-    private Button btSaveLocation, btNavigateHome;
     private ProgressBar progressBar;
-    private LocationManager locationManager;
-    private LocationListener locationListener;
+
     private Context context;
     private long waitingTimeInSec;
-    private int t1Hour, t1Minute, t2Hour, t2Minute;
+    private int t1Hour, t1Minute;
 
 
 
@@ -64,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         w.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        btNavigateHome = findViewById(R.id.bt_navigate);
+        Button btNavigateHome = findViewById(R.id.bt_navigate);
 
         parkingTime = findViewById(R.id.parking_time);
         timeToReturn = findViewById(R.id.time_to_return);
@@ -142,12 +140,11 @@ public class MainActivity extends AppCompatActivity {
                                 } else {
                                     time = hourOfDay +" hour(s) "+ minute+" min";
                                 }
-                                //Calendar calendar = Calendar.getInstance();
 
                                 Calendar calendar = Calendar.getInstance();
                                 calendar.add(Calendar.HOUR,t1Hour);
                                 calendar.add(Calendar.MINUTE,t1Minute);
-                                //calendar.set(0,0,0,t1Hour,t1Minute);
+
 
                                 timeToReturn.setText("You will be back by "+DateFormat.format("HH:mm", calendar));
                                 parkingTime.setText("Parking time: " +time);
@@ -164,13 +161,13 @@ public class MainActivity extends AppCompatActivity {
         });
         progressBar = findViewById(R.id.progressBar);
 
-        btSaveLocation = findViewById(R.id.bt_saveLocation);
+        Button btSaveLocation = findViewById(R.id.bt_saveLocation);
         btSaveLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 saveLocation();
 
-                Toast.makeText(MainActivity.this, "help", Toast.LENGTH_SHORT).show();
+
                 if (ContextCompat.checkSelfPermission(
                         getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION
                 ) != PackageManager.PERMISSION_GRANTED) {
