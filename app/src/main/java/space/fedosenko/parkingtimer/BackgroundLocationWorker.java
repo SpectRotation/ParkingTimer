@@ -38,12 +38,11 @@ public class BackgroundLocationWorker extends Worker {
 
     private static final String TAG = "BackgroundLocationWorker";
     public static final String TIME_TO_RETURN_IN_SECONDS = "time left";
-    private static final int REQUEST_LOCATION = 1;
+
     private Context mContext;
     private Coordinate currentCoordinate, savedCoordinate;
-    private long timeToReturn, timeLeft; //in seconds
-    //delete after test
-    int status = 0;
+    private long timeToReturn;
+
 
     public BackgroundLocationWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -54,35 +53,29 @@ public class BackgroundLocationWorker extends Worker {
     @Override
     public Result doWork() {
         Data inputData = getInputData();
-        timeLeft= inputData.getLong(TIME_TO_RETURN_IN_SECONDS, -1);
+        //in seconds
+        long timeLeft = inputData.getLong(TIME_TO_RETURN_IN_SECONDS, -1);
         timeToReturn = 0;
         if (timeLeft != -1) {
-            while (timeLeft-120>timeToReturn){
+            while (timeLeft -120>timeToReturn){
 
                 getCurrentLocation();
                 try {
-                    sendNotification("time left=" +
-                                    timeToReturn +
-                                    " min. GD used" +
-                            status +
-                            ". Sleep for " +(timeLeft-timeToReturn)/2+
-                            "min");
-
-                    Thread.sleep(1000*(timeLeft-timeToReturn)/2);
+                    Thread.sleep(1000*(timeLeft -timeToReturn)/2);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                timeLeft=timeLeft-(timeLeft-timeToReturn)/2;
-
-                status++;
+                timeLeft = timeLeft -(timeLeft -timeToReturn)/2;
 
 
-                //sendNotification();
+
+
+
             }
-            sendNotification("Job is done! We've used "+status+" distance researches");
+            sendNotification("You should return to your car! Click on this notification to build the road back to your car");
 
         }
-        Log.d(TAG, "doWork: done!!!");
+
         return Result.success();
     }
 
